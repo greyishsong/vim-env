@@ -42,6 +42,7 @@ echo "Done."
 # install plugins
 echo "[info]Install plugins of vim..."
 vim -c "PlugInstall" -c "qa!"
+vim -c "CocInstall coc-json coc-jedi coc-sh" -c "qa!"
 if [ "$(ls $DEVSTACK_HOME/.vim/plugged)" = "" ]; then
     echo "[error]Fail to install plugins for vim, please check your Internet environment."
     exit 1
