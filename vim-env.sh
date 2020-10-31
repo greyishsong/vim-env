@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVSTACK_HOME="/opt/stack"
+USER_HOME="/opt/stack"
 
 # install vim 8.0+ and exuberant-ctags
 echo "[info]Install vim..."
@@ -21,29 +21,29 @@ echo "Done."
 
 # install vim-plug for plug management
 echo "[info]Install vim-plug..."
-mkdir -p $DEVSTACK_HOME/.vim/autoload
-cp plug.vim $DEVSTACK_HOME/.vim/autoload
-if [ ! -f $DEVSTACK_HOME/.vimrc ]; then
-    touch $DEVSTACK_HOME/.vimrc
+mkdir -p $USER_HOME/.vim/autoload
+cp plug.vim $USER_HOME/.vim/autoload
+if [ ! -f $USER_HOME/.vimrc ]; then
+    touch $USER_HOME/.vimrc
 fi
-cat config/plugins.vimrc > $DEVSTACK_HOME/.vimrc
+cat config/plugins.vimrc > $USER_HOME/.vimrc
 echo "Done."
 
 # install powerline fonts
 echo "[info]Install powerline fonts..."
 apt install -y fonts-powerline
 apt install -y fontconfig
-mkdir -p $DEVSTACK_HOME/.config/fontconfig/conf.d
-cp 50-enable-terminess-powerline.conf $DEVSTACK_HOME/.config/fontconfig/conf.d
+mkdir -p $USER_HOME/.config/fontconfig/conf.d
+cp 50-enable-terminess-powerline.conf $USER_HOME/.config/fontconfig/conf.d
 fc-cache -vf
-echo "let g:airline_powerline_fonts = 1" >> $DEVSTACK_HOME/.vimrc
+echo "let g:airline_powerline_fonts = 1" >> $USER_HOME/.vimrc
 echo "Done."
 
 # install plugins
 echo "[info]Install plugins of vim..."
 vim -c "PlugInstall" -c "qa!"
 vim -c "CocInstall coc-json coc-jedi coc-sh" -c "qa!"
-if [ "$(ls $DEVSTACK_HOME/.vim/plugged)" = "" ]; then
+if [ "$(ls $USER_HOME/.vim/plugged)" = "" ]; then
     echo "[error]Fail to install plugins for vim, please check your Internet environment."
     exit 1
 fi
@@ -51,8 +51,8 @@ echo "Done."
 
 # configure plugins
 echo "[info]join configurations of plugins into vimrc..."
-cat config/custom.vimrc >> $DEVSTACK_HOME/.vimrc
-cat config/nerdtree.vimrc >> $DEVSTACK_HOME/.vimrc
-cat config/coc.vimrc >> $DEVSTACK_HOME/.vimrc
-cp config/coc-settings.json $DEVSTACK_HOME/.vim
+cat config/custom.vimrc >> $USER_HOME/.vimrc
+cat config/nerdtree.vimrc >> $USER_HOME/.vimrc
+cat config/coc.vimrc >> $USER_HOME/.vimrc
+cp config/coc-settings.json $USER_HOME/.vim
 echo "Done."
