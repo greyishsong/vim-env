@@ -22,7 +22,7 @@ echo "Done."
 # install vim-plug for plug management
 echo "[info]Install vim-plug..."
 mkdir -p $USER_HOME/.vim/autoload
-cp plug.vim $USER_HOME/.vim/autoload
+cp resource/plug.vim $USER_HOME/.vim/autoload
 if [ ! -f $USER_HOME/.vimrc ]; then
     touch $USER_HOME/.vimrc
 fi
