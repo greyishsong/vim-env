@@ -1,4 +1,4 @@
-"------Section: custom------
+"Section: custom
 set nu
 set tabstop=4
 set shiftwidth=4
@@ -14,3 +14,4 @@ nnoremap <tab>j :tabn<cr>
 nnoremap <tab>k :tabp<cr>
 filetype on
 nnoremap <c-t> :TlistToggle<cr>
+"Section end
