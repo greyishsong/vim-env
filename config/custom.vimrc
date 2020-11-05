@@ -14,4 +14,4 @@ nnoremap <tab>j :tabn<cr>
 nnoremap <tab>k :tabp<cr>
 filetype on
 nnoremap <c-t> :TlistToggle<cr>
-"Section end
+"Sectionend
