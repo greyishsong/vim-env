@@ -1,6 +1,10 @@
 #!/bin/bash
 
-USER_HOME="/opt/stack"
+USER_HOME=$(python3 get-config.py default homepath)
+if [ $USER_HOME = ""]; then
+    echo "[error]Value \"homepath\" in local.conf is required to run script"
+    exit 1
+fi
 
 # install vim 8.0+ and exuberant-ctags
 echo "[info]Install vim..."
@@ -32,11 +36,6 @@ echo "Done."
 # install powerline fonts
 echo "[info]Install powerline fonts..."
 apt install -y fonts-powerline
-apt install -y fontconfig
-mkdir -p $USER_HOME/.config/fontconfig/conf.d
-cp 50-enable-terminess-powerline.conf $USER_HOME/.config/fontconfig/conf.d
-fc-cache -vf
-echo "let g:airline_powerline_fonts = 1" >> $USER_HOME/.vimrc
 echo "Done."
 
 # install plugins
@@ -44,7 +43,7 @@ echo "[info]Install plugins of vim..."
 vim -c "PlugInstall" -c "qa!"
 vim -c "CocInstall coc-json coc-jedi coc-sh" -c "qa!"
 if [ "$(ls $USER_HOME/.vim/plugged)" = "" ]; then
-    echo "[error]Fail to install plugins for vim, please check your Internet environment."
+    echo "[error]Fail to install plugins for vim, there may be some errors with the Internet environment or file authority."
     exit 1
 fi
 echo "Done."
