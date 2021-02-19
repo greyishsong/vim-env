@@ -17,7 +17,8 @@ echo "Done."
 # install node.js for coc.nvim
 echo "[info]Install node.js for coc.nvim..."
 if [ "$(node -v)" = "" ]; then
-    curl -sL install-node.now.sh/lts | bash
+    chmod u+x resource/lts
+    ./resource/lts
     npm install -g nrm --registry=https://registry.npm.taobao.org
     nrm use taobao
 fi
