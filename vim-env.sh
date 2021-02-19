@@ -1,5 +1,6 @@
 #!/bin/bash
 
+USER_NAME=$(python3 get-config.py default username)
 USER_HOME=$(python3 get-config.py default homepath)
 if [ $USER_HOME = ""]; then
     echo "[error]Value \"homepath\" in local.conf is required to run script"
@@ -56,3 +57,8 @@ cat config/nerdtree.vimrc >> $USER_HOME/.vimrc
 cat config/coc.vimrc >> $USER_HOME/.vimrc
 cp config/coc-settings.json $USER_HOME/.vim
 echo "Done."
+
+# change the owner of directories to the specified user
+chown $USER_NAME $USER_HOME/.vimrc
+chown -R $USER_NAME $USER_HOME/.vim
+echo "Finished."
