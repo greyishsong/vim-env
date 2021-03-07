@@ -197,7 +197,7 @@ if [ -z "${ARCH-}" ]; then
 fi
 
 if [ -z "${BASE_URL-}" ]; then
-  BASE_URL="https://mirrors.tuna.tsinghua.edu.vn/nodejs-release"
+  BASE_URL="https://mirrors.tuna.tsinghua.edu.cn/nodejs-release"
 fi
 
 # parse argv variables
