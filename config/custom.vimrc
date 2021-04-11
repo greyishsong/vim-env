@@ -10,8 +10,8 @@ syntax enable
 colorscheme tender
 let g:airline_theme='tender'
 
-nnoremap <tab>j :tabn<cr>
-nnoremap <tab>k :tabp<cr>
+nnoremap <tab>l :tabn<cr>
+nnoremap <tab>h :tabp<cr>
 filetype on
 nnoremap <c-t> :TlistToggle<cr>
 "Sectionend
