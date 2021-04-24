@@ -13,5 +13,4 @@ let g:airline_theme='tender'
 nnoremap <tab>l :tabn<cr>
 nnoremap <tab>h :tabp<cr>
 filetype on
-nnoremap <c-t> :TlistToggle<cr>
 "Sectionend

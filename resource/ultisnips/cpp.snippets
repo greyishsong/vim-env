@@ -1,0 +1,5 @@
+snippet debugprint "add fprintf for debug usage"
+#ifdef DEBUG
+fprintf(stderr, "${1:%d}", ${2:var});
+#endif
+endsnippet

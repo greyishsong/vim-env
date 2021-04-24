@@ -5,12 +5,12 @@ if [ $HOME = ""]; then
     exit 1
 fi
 
-# install vim 8.0+ and exuberant-ctags
+# install vim 8.0+ and universal-ctags
 echo "[info]Install vim..."
 sudo apt install -y vim vim-gtk
 echo "Done."
-echo "[info]Install ctags for taglist plugin..."
-sudo apt install -y exuberant-ctags
+echo "[info]Install ctags..."
+sudo apt install -y universal-ctags
 echo "Done."
 
 # install node.js for coc.nvim
@@ -41,7 +41,7 @@ echo "Done."
 # install plugins
 echo "[info]Install plugins of vim..."
 vim -c "PlugInstall" -c "qa!"
-vim -c "CocInstall coc-json coc-jedi coc-sh" -c "qa!"
+vim -c "CocInstall coc-json coc-sh coc-snippets" -c "qa!"
 if [ "$(ls $HOME/.vim/plugged)" = "" ]; then
     echo "[error]Fail to install plugins for vim, there may be some errors with the Internet environment or file authority."
     exit 1
@@ -50,10 +50,25 @@ echo "Done."
 
 # merge vimrc configuration file
 echo "[info]join configurations of plugins into vimrc..."
-cat config/custom.vimrc >> $HOME/.vimrc
-cat config/nerdtree.vimrc >> $HOME/.vimrc
-cat config/coc.vimrc >> $HOME/.vimrc
-cp config/coc-settings.json $HOME/.vim
+for conf in $(ls config | grep vimrc)
+do
+    if [ $conf != "plugins.vimrc" ]
+    then
+        cat config/$conf >> $HOME/.vimrc
+    fi
+done
+echo "Done."
+
+# copy custom snippets
+echo "[info]copy custom snippets..."
+if [ ! -f $HOME/.config/coc/ultisnips ]
+then
+    mkdir -p $HOME/.config/coc/ultisnips
+fi
+for snippet in $(ls resource/ultisnips)
+do
+    cp resource/snippet $HOME/.config/coc/ultisnips
+done
 echo "Done."
 
 echo "Finished."
