@@ -156,4 +156,5 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<tab>'
+nnoremap <c-e>  :CocCommand explorer<CR>
 "Sectionend
