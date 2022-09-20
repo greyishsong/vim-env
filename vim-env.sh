@@ -18,7 +18,7 @@ echo "[info]Install node.js for coc.nvim..."
 if [ "$(node -v)" = "" ]; then
     chmod u+x resource/lts
     ./resource/lts
-    sudo npm install -g nrm --registry=https://registry.npm.taobao.org
+    sudo npm install -g nrm --registry=https://npmmirror.com/mirrors/
     nrm use taobao
 fi
 echo "Done."
