@@ -18,9 +18,9 @@ echo "[info]Install node.js for coc.nvim..."
 if [ "$(node -v)" = "" ]; then
     chmod u+x resource/lts
     ./resource/lts
-    sudo npm install -g nrm --registry=https://npmmirror.com/mirrors/
-    nrm use taobao
 fi
+sudo npm install -g nrm
+nrm use taobao
 echo "Done."
 
 # install vim-plug for plug management
@@ -67,7 +67,7 @@ then
 fi
 for snippet in $(ls resource/ultisnips)
 do
-    cp resource/snippet $HOME/.config/coc/ultisnips
+    cp resource/ultisnips $HOME/.config/coc/ultisnips
 done
 echo "Done."
 
