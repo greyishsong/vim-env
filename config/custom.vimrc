@@ -6,10 +6,11 @@ set softtabstop=4
 set expandtab
 set cursorline
 
-let g:airline_powerline_fonts=1
 syntax enable
 colorscheme tender
 let g:airline_theme='tender'
+let g:airline_powerline_fonts=1
+let g:fcitx5_remote='fcitx5-remote'
 
 nnoremap <tab>l :tabn<cr>
 nnoremap <tab>h :tabp<cr>
