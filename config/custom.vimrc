@@ -4,6 +4,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set cursorline
 
 let g:airline_powerline_fonts=1
 syntax enable
