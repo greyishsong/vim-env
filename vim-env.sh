@@ -48,15 +48,12 @@ if [ "$(ls $HOME/.vim/plugged)" = "" ]; then
 fi
 echo "Done."
 
-# merge vimrc configuration file
+# merge vimrc configuration file, the rc files should be merged in the specified order.
 echo "[info]join configurations of plugins into vimrc..."
-for conf in $(ls config | grep vimrc)
-do
-    if [ $conf != "plugins.vimrc" ]
-    then
-        cat config/$conf >> $HOME/.vimrc
-    fi
-done
+cat config/custom.vimrc >> $HOME/.vimrc
+cat config/vim-which-key.vimrc >> $HOME/.vimrc
+cat config/coc.vimrc >> $HOME/.vimrc
+cat config/tagbar.vimrc >> $HOME/.vimrc
 echo "Done."
 
 # copy custom snippets
