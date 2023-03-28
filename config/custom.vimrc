@@ -8,6 +8,9 @@ set cursorline
 
 syntax enable
 colorscheme tender
+"colorscheme solarized8
+set termguicolors
+"set background=light
 let g:airline_theme='tender'
 let g:airline_powerline_fonts=1
 let g:fcitx5_remote='fcitx5-remote'
